@@ -465,12 +465,30 @@
           <p class="helper">Where are you based, or which team do you represent?</p>
         </div>
 
-        <!-- Role -->
-        <div class="field">
-          <label for="role">Role / Position <span class="opt">(optional)</span></label>
-          <input type="text" id="role" name="role" placeholder="e.g., Sales Advisor, Supervisor" />
-        </div>
-      </div>
+       <!-- Role -->
+<div class="field">
+
+  <label for="role">
+    Role / Position
+    <span class="req">*</span>
+  </label>
+
+  <select name="role" id="role" required>
+    <option value="">Select your role</option>
+
+    <option value="Sales Expert">Sales Expert</option>
+    <option value="Retail Supervisor">Retail Supervisor</option>
+    <option value="Senior Retail Supervisor">Senior Retail Supervisor</option>
+    <option value="Indirect Sales Specialist">Indirect Sales Specialist</option>
+    <option value="Senior Indirect Sales Specialist">Senior Indirect Sales Specialist</option>
+    <option value="Customer Care Expert">Customer Care Expert</option>
+    <option value="Customer Care Supervisor">Customer Care Supervisor</option>
+    <option value="Customer Care Senior Supervisor">Customer Care Senior Supervisor</option>
+    <option value="Other">Other</option>
+
+  </select>
+
+</div>
 
       <!-- Topic -->
       <div class="field">
@@ -497,13 +515,14 @@
     <span class="req">*</span>
   </label>
 
-  <select name="urgency" required>
-    <option value="">Select urgency</option>
-    <option value="Low">Low</option>
-    <option value="Medium">Medium</option>
-    <option value="High">High</option>
-    <option value="Critical">Critical</option>
-  </select>
+<select name="urgency" required>
+  <option value="">Select urgency</option>
+  <option value="No Impact">No Impact</option>
+  <option value="Low">Low</option>
+  <option value="Medium">Medium</option>
+  <option value="High">High</option>
+  <option value="Critical">Critical</option>
+</select>
 </div>
 
      <!-- Challenge -->
