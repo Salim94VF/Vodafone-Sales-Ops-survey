@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Vodafone Oman — Share Your Voice</title>
+<title>Vodafone Oman — Power the Change</title>
 <meta name="description" content="Vodafone Oman Sales & Services — share your inputs and challenges in the monthly meeting." />
 <style>
   :root{
@@ -634,54 +634,6 @@
   }
 </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-<body style="font-family: Arial; padding: 30px;">
-
-<h1>Vodafone Survey</h1>
-
-<form action="https://script.google.com/macros/s/AKfycbyIjCUAtBZT6bZ66jqCTA2Sd60PflSjbHVd_paK1IB2x7FK_2H_Q6KONFAAE1fRpbkH/exec" method="POST">
-
-  <label>Name</label><br>
-  <input type="text" name="name" required style="width:100%; padding:10px;"><br><br>
-
-  <label>Email</label><br>
-  <input type="email" name="email" required style="width:100%; padding:10px;"><br><br>
-
-  <label>Feedback</label><br>
-  <textarea name="message" required style="width:100%; padding:10px; height:150px;"></textarea><br><br>
-
-  <button type="submit" style="background:red; color:white; padding:12px 25px; border:none;">
-    Submit
-  </button>
-
-</form>
-<script>
-document.querySelector("form").addEventListener("submit", async function(e) {
-  e.preventDefault();
-
-  const data = {
-    name: document.querySelector('[name="name"]')?.value || "",
-    location: document.querySelector('[name="location"]')?.value || "",
-    role: document.querySelector('[name="role"]')?.value || "",
-    topic: document.querySelector('[name="topic"]')?.value || "",
-    urgency: document.querySelector('[name="urgency"]')?.value || "",
-    challenge: document.querySelector('[name="challenge"]')?.value || "",
-    solution: document.querySelector('[name="solution"]')?.value || "",
-    recognition: document.querySelector('[name="recognition"]')?.value || ""
-  };
-
-  await fetch("https://script.google.com/macros/s/AKfycbzphesdDgbbnVHxh02rBJIL5ExZT15Q-QgngmKPDf2ug_NULHeKsFoXd1U46NJiFkKi/exec", {
-    method: "POST",
-    mode: "no-cors",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-  });
-
-  alert("Response submitted successfully!");
-  e.target.reset();
-});
-</script>
 
 </body>
 </html>
