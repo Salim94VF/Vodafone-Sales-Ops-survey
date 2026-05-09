@@ -388,7 +388,7 @@
   <div><span class="pill"><span class="dot"></span> SALES &amp; SERVICES MONTHLY MEETING</span></div>
   <h1 class="title">Share Your <span class="accent">Voice</span></h1>
   <p class="subtitle">
-    Help us shape the future of Vodafone Oman.
+    Help us shape the future of Vodafone Sales & Services Performance.
     Tell us what's working, what's challenging you, and your ideas to make tomorrow better.
   </p>
 
@@ -412,7 +412,7 @@
 
       <!-- Name -->
       <div class="field">
-        <label for="name">Your Name <span class="req">*</span></label>
+        <label for="name">Your Full Name <span class="req">*</span></label>
         <input type="text" id="name" name="name" placeholder="e.g., Khalid Al-Hinai" required />
       </div>
 
@@ -494,16 +494,29 @@
       <!-- Severity -->
       <div class="field">
         <label>How urgent is this? <span class="req">*</span></label>
-        <div class="severity" role="radiogroup" aria-label="Severity">
-          <input type="radio" id="sev1" name="severity" value="Low" required />
-          <label for="sev1" class="lvl-low"><span class="icon"></span> Low</label>
-          <input type="radio" id="sev2" name="severity" value="Medium" />
-          <label for="sev2" class="lvl-med"><span class="icon"></span> Medium</label>
-          <input type="radio" id="sev3" name="severity" value="High" />
-          <label for="sev3" class="lvl-high"><span class="icon"></span> High</label>
-          <input type="radio" id="sev4" name="severity" value="Critical" />
-          <label for="sev4" class="lvl-crit"><span class="icon"></span> Critical</label>
-        </div>
+<div class="urgency-group">
+
+<label class="urgency-card">
+  <input type="radio" name="urgency" value="Low" hidden>
+  <span>LOW</span>
+</label>
+
+<label class="urgency-card">
+  <input type="radio" name="urgency" value="Medium" hidden>
+  <span>MEDIUM</span>
+</label>
+
+<label class="urgency-card">
+  <input type="radio" name="urgency" value="High" hidden>
+  <span>HIGH</span>
+</label>
+
+<label class="urgency-card">
+  <input type="radio" name="urgency" value="Critical" hidden>
+  <span>CRITICAL</span>
+</label>
+
+</div>
       </div>
 
       <!-- Challenge -->
