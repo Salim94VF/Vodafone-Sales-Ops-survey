@@ -491,33 +491,21 @@
         </select>
       </div>
 
-      <!-- Severity -->
-      <div class="field">
-        <label>How urgent is this? <span class="req">*</span></label>
-<div class="urgency-group">
+     <!-- Severity -->
+<div class="field">
+  <label for="urgency">
+    How urgent is this?
+    <span class="req">*</span>
+  </label>
 
-<label class="urgency-card">
-  <input type="radio" name="urgency" value="Low" hidden>
-  <span>LOW</span>
-</label>
-
-<label class="urgency-card">
-  <input type="radio" name="urgency" value="Medium" hidden>
-  <span>MEDIUM</span>
-</label>
-
-<label class="urgency-card">
-  <input type="radio" name="urgency" value="High" hidden>
-  <span>HIGH</span>
-</label>
-
-<label class="urgency-card">
-  <input type="radio" name="urgency" value="Critical" hidden>
-  <span>CRITICAL</span>
-</label>
-
+  <select name="urgency" required>
+    <option value="">Select urgency</option>
+    <option value="Low">Low</option>
+    <option value="Medium">Medium</option>
+    <option value="High">High</option>
+    <option value="Critical">Critical</option>
+  </select>
 </div>
-      </div>
 
       <!-- Challenge -->
       <div class="field">
@@ -668,7 +656,7 @@ document.querySelector("form").addEventListener("submit", async function(e) {
     location: document.querySelector('[name="location"]')?.value || "",
     role: document.querySelector('[name="role"]')?.value || "",
     topic: document.querySelector('[name="topic"]')?.value || "",
-    urgency: document.querySelector('[name="urgency"]:checked')?.value || "",
+    urgency: document.querySelector('[name="urgency"]')?.value || "",
     challenge: document.querySelector('[name="challenge"]')?.value || "",
     solution: document.querySelector('[name="solution"]')?.value || "",
     recognition: document.querySelector('[name="recognition"]')?.value || ""
