@@ -71,7 +71,23 @@ footer{text-align:center;padding:40px 16px 60px;color:rgba(255,255,255,.4);font-
     <div class="heading"><span class="glow-dot"></span><h2>Your Inputs &amp; Challenges</h2></div>
     <p class="lead">All responses are reviewed confidentially by Sales Operations and may be shared with the relevant teams or management whenever needed to support improvements and action plans.</p>
     <form id="feedbackForm" autocomplete="off">
-      <div class="field"><label for="name">Your Full Name <span class="req">*</span></label><input type="text" id="name" name="name" placeholder="e.g., Khalid Al-Hinai" required /></div>
+      <div class="row-2">
+        <div class="field">
+          <label for="namePreference">Submit As <span class="req">*</span></label>
+          <select id="namePreference" name="namePreference" required>
+            <option value="" disabled selected>Select option…</option>
+            <option value="Anonymous">Anonymous</option>
+            <option value="Full Name">Your full name</option>
+          </select>
+          <p class="helper">Choose Anonymous if you prefer not to share your name.</p>
+        </div>
+
+        <div class="field" id="nameField" style="display:none;">
+          <label for="name">Your Full Name <span class="req">*</span></label>
+          <input type="text" id="name" name="name" placeholder="e.g., Khalid Al-Hinai" />
+          <p class="helper">Required only when you select “Your full name”.</p>
+        </div>
+      </div>
       <div class="row-2">
         <div class="field"><label for="location">Location <span class="req">*</span></label><select id="location" name="location" required><option value="" disabled selected>Select your location…</option><optgroup label="Retail Outlets"><option>Automobile_outlet</option><option>Avenue_Mall</option><option>Bahla_outlet</option><option>Barka_Outlet</option><option>Buraimi_outlet</option><option>eS-Batina</option><option>eS-MCT-E</option><option>eS-MCT-S</option><option>eS-SLL</option><option>Exp_Almudhaibi</option><option>Exp_Jalanbuhassan</option><option>Exp_masirah</option><option>IBRA_OUTLET</option><option>Ibri_Outlet</option><option>Jalan_Outlet</option><option>Khaboura_outlet</option><option>Mabila_Outlet</option><option>MCT_Airport</option><option>Muscat_CC_Outlet</option><option>nizwa_outlet</option><option>Qurayyat_Outlet</option><option>Shinas_Outlet</option><option>Sinaw_Outlet</option><option>SLL_Airport</option><option>SLL_OUTLET</option><option>Sohar_CC_Outlet</option><option>SQU</option><option>Sur_CC_Outlet</option><option>Swuaiq_outlet</option><option>VF_Musannah</option><option>vodafonehub</option></optgroup><optgroup label="Departments / Teams"><option>Sales Operations</option><option>Customer Care</option><option>Indirect Sales Team</option><option>Other</option></optgroup></select><p class="helper">Where are you based, or which team do you represent?</p></div>
         <div class="field"><label for="role">Role / Position <span class="req">*</span></label><select name="role" id="role" required><option value="">Select your role</option><option value="Sales Expert">Retail Expert</option><option value="Retail Supervisor">Retail Supervisor</option><option value="Senior Retail Supervisor">Senior Retail Supervisor</option><option value="Indirect Sales Specialist">Indirect Sales Specialist</option><option value="Senior Indirect Sales Specialist">Senior Indirect Sales Specialist</option><option value="Customer Care Expert">Customer Care Expert</option><option value="Customer Care Supervisor">Customer Care Supervisor</option><option value="Customer Care Senior Supervisor">Customer Care Senior Supervisor</option><option value="Other">Other</option></select></div>
@@ -90,8 +106,23 @@ footer{text-align:center;padding:40px 16px 60px;color:rgba(255,255,255,.4);font-
 <script>
 (function(){const wrap=document.getElementById('particles');const count=18;for(let i=0;i<count;i++){const s=document.createElement('span');s.style.left=(Math.random()*100)+'%';const size=2+Math.random()*5;s.style.width=size+'px';s.style.height=size+'px';s.style.animationDuration=(14+Math.random()*16)+'s';s.style.animationDelay=(-Math.random()*30)+'s';s.style.opacity=0.2+Math.random()*0.6;if(i%3===0){s.style.background='#FF6B8A';s.style.boxShadow='0 0 12px #FF6B8A,0 0 24px rgba(255,107,138,.55)'}wrap.appendChild(s)}})();
 const form=document.getElementById('feedbackForm');const formCard=document.getElementById('formCard');const successCard=document.getElementById('successCard');
-form.addEventListener('submit',async function(e){e.preventDefault();const data={name:form.name.value.trim(),location:form.location.value,role:form.role.value,topic:form.topic.value,urgency:form.urgency.value,challenge:form.challenge.value.trim(),solution:form.solution.value.trim(),recognition:form.recognition.value.trim()};await fetch('https://script.google.com/macros/s/AKfycbzphesdDgbbnVHxh02rBJIL5ExZT15Q-QgngmKPDf2ug_NULHeKsFoXd1U46NJiFkKi/exec',{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});formCard.style.display='none';successCard.classList.add('show');window.scrollTo({top:0,behavior:'smooth'});});
-function resetForm(){form.reset();successCard.classList.remove('show');formCard.style.display='block';window.scrollTo({top:0,behavior:'smooth'});}
+const namePreference=document.getElementById('namePreference');
+const nameField=document.getElementById('nameField');
+const nameInput=document.getElementById('name');
+
+function handleNamePreference(){
+  if(namePreference.value === 'Full Name'){
+    nameField.style.display='block';
+    nameInput.required=true;
+  }else{
+    nameField.style.display='none';
+    nameInput.required=false;
+    nameInput.value='';
+  }
+}
+namePreference.addEventListener('change',handleNamePreference);
+form.addEventListener('submit',async function(e){e.preventDefault();const data={namePreference:form.namePreference.value,name:form.namePreference.value==='Full Name'?form.name.value.trim():'Anonymous',location:form.location.value,role:form.role.value,topic:form.topic.value,urgency:form.urgency.value,challenge:form.challenge.value.trim(),solution:form.solution.value.trim(),recognition:form.recognition.value.trim()};await fetch('https://script.google.com/macros/s/AKfycbzphesdDgbbnVHxh02rBJIL5ExZT15Q-QgngmKPDf2ug_NULHeKsFoXd1U46NJiFkKi/exec',{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});formCard.style.display='none';successCard.classList.add('show');window.scrollTo({top:0,behavior:'smooth'});});
+function resetForm(){form.reset();handleNamePreference();successCard.classList.remove('show');formCard.style.display='block';window.scrollTo({top:0,behavior:'smooth'});}
 </script>
 </body>
 </html>
